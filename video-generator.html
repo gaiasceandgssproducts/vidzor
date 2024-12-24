@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidzor - Video Generator</title>
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="file"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            background: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .preview {
+            margin-top: 20px;
+            text-align: center;
+        }
+        video {
+            max-width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vidzor - Generate Your Animated Video</h1>
+    <div class="container">
+        <div class="form-group">
+            <label for="image">Upload an Image</label>
+            <input type="file" id="image" accept="image/*">
+        </div>
+        <div class="form-group">
+            <label for="prompt">Enter a Text Prompt</label>
+            <textarea id="prompt" rows="5" placeholder="Describe the animation you want..."></textarea>
+        </div>
+        <button onclick="generateVideo()">Generate Video</button>
+        <div class="preview" id="preview">
+            <!-- Video preview will be shown here -->
+        </div>
+    </div>
+
+    <script>
+        function generateVideo() {
+            const imageInput = document.getElementById('image');
+            const prompt = document.getElementById('prompt').value;
+
+            if (!imageInput.files.length || !prompt.trim()) {
+                alert('Please provide both an image and a text prompt.');
+                return;
+            }
+
+            const previewContainer = document.getElementById('preview');
+            previewContainer.innerHTML = `
+                <p>Processing your video...</p>
+                <video controls>
+                    <source src="https://web.tresorit.com/l/3on0E#LSuyoQ8vZmKL6_f11Ew9TQ" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p><a href="https://web.tresorit.com/l/3on0E#LSuyoQ8vZmKL6_f11Ew9TQ" download>Download Video</a></p>
+            `;
+        }
+    </script>
+</body>
+</html>
